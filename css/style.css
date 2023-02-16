@@ -1,0 +1,169 @@
+/* Temporary Style */
+.not-styled {
+  display: none;
+}
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/*  ============
+    Global Rules
+    ============  */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Colors */
+:root {
+  --text-accent: hsl(213, 96%, 18%);
+  --text-accent-active: hsl(213, 71%, 31%);
+  --text-secondry: hsl(231, 11%, 63%);
+  --text-secondry-hight-contrast: hsl(0, 0%, 100%);
+
+  --field-active: hsl(243, 100%, 62%);
+  --field-error: hsl(354, 84%, 57%);
+
+  --bg-active: hsl(206, 94%, 87%);
+  --section-bg: hsl(0, 0%, 100%);
+  --main-bg: hsl(217, 100%, 97%);
+  --shadow: hsl(229, 24%, 87%);
+
+  /* Unused Colors */
+  /* primary */
+  --pastel-blue: hsl(228, 100%, 84%);
+  /* neutral */
+  --alabaster: hsl(231, 100%, 99%);
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  background-color: var(--main-bg);
+}
+
+/*  ===============
+    Conteiner Style
+    ===============  */
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  /* for moblie design */
+  min-height: 100vh;
+  background-image: url("../assets/images/bg-sidebar-mobile.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/*  =========================
+    Steps order (aside) Style
+    =========================  */
+ul {
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+}
+ul li {
+  display: block;
+  height: fit-content;
+  margin: 30px 10px;
+  list-style: none;
+}
+ul .order {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 40px;
+  width: 40px;
+
+  color: var(--text-secondry-hight-contrast);
+  font-weight: 500;
+  font-size: 1.1em;
+
+  border: 1px solid var(--text-secondry-hight-contrast);
+  border-radius: 100%;
+}
+ul .order.active {
+  color: var(--text-accent);
+  background-color: var(--bg-active);
+  border-color: var(--bg-active);
+}
+ul .text {
+  display: none; /* for mobile */
+}
+
+/*  ==================
+    Main (steps) style
+    ==================  */
+.main {
+  background-color: var(--section-bg);
+  margin: 0 20px;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 35px 50px -20px var(--shadow);
+}
+.main h2 {
+  color: var(--text-accent);
+  font-weight: 700;
+}
+.main h2 + p {
+  margin: 15px 0;
+  line-height: 1.4;
+  color: var(--text-secondry);
+}
+.step-one label {
+  display: block;
+  margin: 10px 0 5px;
+  color: var(--text-accent-active);
+  font-weight: 500;
+}
+.step-one input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: 1px solid var(--text-secondry);
+  border-radius: 5px;
+
+  color: var(--text-accent-active);
+  font-weight: 500;
+}
+.step-one input::placeholder {
+  color: var(--text-secondry);
+}
+.step-one input:focus {
+  border-color: var(--field-active);
+}
+
+/*  ============
+    Footer Style
+    ============  */
+footer {
+  background-color: var(--section-bg);
+  padding: 1px;
+  margin-top: auto;
+}
+footer .next-btn {
+  display: block;
+  padding: 12px 20px;
+  margin: 20px;
+  margin-left: auto;
+
+  background-color: var(--text-accent);
+  color: var(--alabaster);
+  border-radius: 5px;
+
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+footer .next-btn:hover {
+  background-color: var(--text-accent-active);
+}
