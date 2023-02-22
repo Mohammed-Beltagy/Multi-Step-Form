@@ -27,6 +27,7 @@
   --text-accent-active: hsl(213, 71%, 31%);
   --text-secondry: hsl(231, 11%, 63%);
   --text-secondry-hight-contrast: hsl(0, 0%, 100%);
+  --text-shadow: rgb(122, 177, 236);
 
   --field-active: hsl(243, 100%, 62%);
   --field-error: hsl(354, 84%, 57%);
@@ -46,6 +47,17 @@
 body {
   font-family: "Ubuntu", sans-serif;
   background-color: var(--main-bg);
+}
+
+.text h3 {
+  color: var(--text-accent);
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.low-contrast-text {
+  color: var(--text-secondry);
+  font-weight: 400;
 }
 
 /*  ===============
@@ -106,9 +118,9 @@ ul .text {
 .main {
   background-color: var(--section-bg);
   margin: 0 20px;
-  padding: 35px 25px;
   border-radius: 10px;
   box-shadow: 0 35px 50px -20px var(--shadow);
+  overflow: hidden;
 }
 .main h2 {
   color: var(--text-accent);
@@ -118,6 +130,17 @@ ul .text {
   margin: 10px 0;
   line-height: 1.4;
   color: var(--text-secondry);
+}
+
+/* Slider */
+.slider {
+  width: 400%;
+  display: flex;
+  transition: 0.3s ease-in-out;
+}
+.slider .step {
+  flex-basis: 100%;
+  padding: 35px 25px;
 }
 
 /* Step One */
@@ -144,40 +167,38 @@ ul .text {
   border-color: var(--field-active);
 }
 
-/* Step Two */
-.step-two .plans-container > div {
+/* Step Two & Three */
+.step-two .plans-container > div,
+.step-three .add-on {
   display: flex;
   width: 100%;
   padding: 15px;
   margin-top: 15px;
   border-radius: 7px;
 }
-.step-two .plan {
+.step-two .plan,
+.step-three .add-on {
   border: 1px solid var(--shadow);
   cursor: pointer;
   user-select: none;
   color: var(--text-accent-active);
   font-weight: 500;
 }
-.step-two .plan.chosen {
+.step-two .plan.chosen,
+.step-three .add-on.checked {
   background-color: var(--main-bg);
   border-color: var(--field-active);
 }
 .step-two .plan:focus,
-.step-two .plan:hover {
+.step-two .plan:hover,
+.step-three .add-on:focus,
+.step-three .add-on:hover {
   border-color: var(--field-active);
 }
+
+/* Step Two */
 .step-two .plan img {
   margin-right: 15px;
-}
-.step-two .plan h3 {
-  font-size: 1.1em;
-  font-weight: 700;
-  margin-bottom: 3px;
-}
-.step-two .plan span {
-  color: var(--text-secondry);
-  font-weight: 400;
 }
 .step-two .switcher-container {
   margin-top: 25px;
@@ -219,6 +240,81 @@ ul .text {
 }
 input[type="checkbox"]:checked + label[for="switcher"] span {
   left: calc(100% - 16px);
+}
+/* Step Three */
+.add-on {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+.add-on input[type="checkbox"] {
+  display: none;
+}
+.add-on .checkbox-alt {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--text-secondry);
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.add-on input[type="checkbox"]:checked + .checkbox-alt {
+  border-color: var(--field-active);
+  background-color: var(--field-active);
+}
+.add-on .checkbox-alt::before {
+  content: url("../assets/images/icon-checkmark.svg");
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+.add-on input[type="checkbox"]:checked + .checkbox-alt::before {
+  display: block;
+}
+.add-on .price {
+  margin-left: auto;
+}
+
+/* Step Four */
+.step-four .sum {
+  background-color: var(--alabaster);
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+.step-four h3 {
+  font-size: 1em;
+  text-shadow: 0 0 1px var(--text-shadow);
+  font-weight: 700;
+}
+.step-four .price {
+  color: var(--text-accent);
+  text-shadow: 0 0 1px var(--text-shadow);
+}
+.step-four .row:nth-child(1) .price {
+  font-weight: 700;
+}
+.step-four .total .price {
+  box-shadow: none;
+  color: var(--field-active);
+  font-weight: 700;
+  font-size: 1.2em;
+}
+.step-four .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+.step-four hr {
+  margin: 10px 0;
+  border: none;
+  background-color: var(--text-secondry);
+  height: 1px;
+}
+.step-four .total {
+  padding: 20px;
 }
 
 /*  ============

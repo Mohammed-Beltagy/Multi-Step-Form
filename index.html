@@ -59,60 +59,137 @@
         </li>
       </ul>
       <form id="main" class="main">
-        <!-- Step One -->
-        <!--
-        <div class="step-one">
-          <h2>Personal info</h2>
-          <p>Please provide your name, email address, and phone number.</p>
+        <!-- This Slider To Hide Steps And Moves To Show The Next Step -->
+        <div id="slider" class="slider">
+          <!-- Step One -->
+          <div class="step step-one">
+            <h2>Personal info</h2>
+            <p>Please provide your name, email address, and phone number.</p>
 
-          <label>Name</label>
-          <input type="text" placeholder="e.g. Stephen King" required />
+            <label>Name</label>
+            <input type="text" placeholder="e.g. Stephen King" required />
 
-          <label>Email Address</label>
-          <input
-            type="email"
-            placeholder="e.g. stephenking@lorem.com"
-            required
-          />
+            <label>Email Address</label>
+            <input
+              type="email"
+              placeholder="e.g. stephenking@lorem.com"
+              required
+            />
 
-          <label>Phone Number</label>
-          <input type="tel" placeholder="e.g. +1 234 567 890" required />
-        </div>
-       -->
-        <div class="step-two">
-          <h2>Select your plan</h2>
-          <p>You have the option of monthly or yearly billing.</p>
+            <label>Phone Number</label>
+            <input type="tel" placeholder="e.g. +1 234 567 890" required />
+          </div>
 
-          <div class="plans-container">
-            <div class="plan chosen">
-              <img src="assets/images/icon-arcade.svg" alt="Arcade plan icon" />
-              <div class="text">
-                <h3>Arcade</h3>
-                <span>$9/mo</span>
+          <!-- Step Two -->
+          <div class="step step-two">
+            <h2>Select your plan</h2>
+            <p>You have the option of monthly or yearly billing.</p>
+
+            <div class="plans-container">
+              <div class="plan chosen">
+                <img
+                  src="assets/images/icon-arcade.svg"
+                  alt="Arcade plan icon"
+                />
+                <div class="text">
+                  <h3>Arcade</h3>
+                  <span class="low-contrast-text">$9/mo</span>
+                </div>
+              </div>
+              <div class="plan">
+                <img
+                  src="assets/images/icon-advanced.svg"
+                  alt="Advanced plan icon"
+                />
+                <div class="text">
+                  <h3>Advanced</h3>
+                  <span class="low-contrast-text">$12/mo</span>
+                </div>
+              </div>
+              <div class="plan">
+                <img src="assets/images/icon-pro.svg" alt="Pro plan icon" />
+                <div class="text">
+                  <h3>Pro</h3>
+                  <span class="low-contrast-text">$15/mo</span>
+                </div>
+              </div>
+              <div class="switcher-container">
+                <span class="monthly chosen">Monthly</span>
+                <input type="checkbox" name="switcher" id="switcher" />
+                <label for="switcher"><span></span></label>
+                <span class="yearly">Yearly</span>
               </div>
             </div>
-            <div class="plan">
-              <img
-                src="assets/images/icon-advanced.svg"
-                alt="Advanced plan icon"
-              />
-              <div class="text">
-                <h3>Advanced</h3>
-                <span>$12/mo</span>
+          </div>
+
+          <!-- Step Three -->
+          <div class="step step-three">
+            <h2>Pick add-ons</h2>
+            <p>Add-ons help enhance your gaming experience.</p>
+            <div class="add-ons-container">
+              <label for="add-on-1" class="add-on checked">
+                <input type="checkbox" name="add-on-1" id="add-on-1" checked />
+                <label class="checkbox-alt"></label>
+                <div class="text">
+                  <h3>Online service</h3>
+                  <span class="low-contrast-text"
+                    >Access to multiplayer games</span
+                  >
+                </div>
+                <span class="price">+$1/mo</span>
+              </label>
+              <label for="add-on-2" class="add-on checked">
+                <input type="checkbox" name="add-on-2" id="add-on-2" checked />
+                <label class="checkbox-alt"></label>
+                <div class="text">
+                  <h3>Larger storage</h3>
+                  <span class="low-contrast-text">Extra 1TB of cloud save</span>
+                </div>
+                <span class="price">+$2/mo</span>
+              </label>
+              <label for="add-on-3" class="add-on">
+                <input type="checkbox" name="add-on-3" id="add-on-3" />
+                <label class="checkbox-alt"></label>
+                <div class="text">
+                  <h3>Customizable Profile</h3>
+                  <span class="low-contrast-text"
+                    >Custom theme on your profile</span
+                  >
+                </div>
+                <span class="price">+$2/mo</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step Four -->
+          <div class="step step-four">
+            <h2>Finishing up</h2>
+            <p>Double-check everything looks OK before confirming.</p>
+
+            <div class="sum">
+              <div class="row">
+                <div class="text">
+                  <h3>Arcade (Monthly)</h3>
+                  <span class="low-contrast-text">Change</span>
+                </div>
+                <span class="price">$90/yr</span>
+              </div>
+
+              <hr />
+
+              <div class="row">
+                <span class="low-contrast-text">Online service</span>
+                <span class="price">+$10/y</span>
+              </div>
+
+              <div class="row">
+                <span class="low-contrast-text">Larger storage</span>
+                <span class="price">+$20/y</span>
               </div>
             </div>
-            <div class="plan">
-              <img src="assets/images/icon-pro.svg" alt="Pro plan icon" />
-              <div class="text">
-                <h3>Pro</h3>
-                <span>$15/mo</span>
-              </div>
-            </div>
-            <div class="switcher-container">
-              <span class="monthly chosen">Monthly</span>
-              <input type="checkbox" name="switcher" id="switcher" />
-              <label for="switcher"><span></span></label>
-              <span class="yearly">Yearly</span>
+            <div class="total row">
+              <span class="low-contrast-text">Total (per year)</span>
+              <span class="price">$120/y</span>
             </div>
           </div>
         </div>
@@ -124,18 +201,7 @@
     </div>
 
     <div class="not-styled">
-      <!-- Step 3 start -->
-
-      Pick add-ons Add-ons help enhance your gaming experience. Online service
-      Access to multiplayer games +$1/mo Larger storage Extra 1TB of cloud save
-      +$2/mo Customizable Profile Custom theme on your profile +$2/mo Go Back
-      Next Step
-
-      <!-- Step 3 end -->
-
       <!-- Step 4 start -->
-
-      Finishing up Double-check everything looks OK before confirming.
 
       <!-- Dynamically add subscription and add-on selections here -->
 
@@ -158,5 +224,7 @@
         >. Coded by <a href="#">Your Name Here</a>.
       </div>
     </div>
+
+    <script src="app.js"></script>
   </body>
 </html>
