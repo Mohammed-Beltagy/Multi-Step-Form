@@ -20,7 +20,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./assets/screenshot.jpg)
 
 ### Links
 
@@ -36,4 +36,4 @@ Users should be able to:
 ## Author
 
 - Website - [Mohammed Beltagy](https://mohammed-beltagy.github.io/Beltagy-Portifolio/)
-- Frontend Mentor - [@Mohammed-Beltagy](https://www.frontendmentor.io/profile/Mohammed-Beltagy)
+- Frontend Mentor - [@Mohammed-BeltagyZ](https://www.frontendmentor.io/profile/Mohammed-Beltagy)
