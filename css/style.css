@@ -65,13 +65,29 @@ body {
     ===============  */
 .container {
   width: 100%;
-  display: grid;
-  grid-template-rows: auto auto 1fr;
   /* for moblie design */
   min-height: 100vh;
   background-image: url("../assets/images/bg-sidebar-mobile.svg");
   background-repeat: no-repeat;
   background-size: contain;
+}
+@media (min-width: 850px) {
+  .container {
+    display: grid;
+    grid-template-columns: 274px 500px;
+    grid-template-rows: 568px;
+
+    width: fit-content;
+    min-height: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 15px;
+    border-radius: 15px;
+    background: var(--section-bg);
+  }
 }
 
 /*  =========================
@@ -82,11 +98,26 @@ ul {
   justify-content: center;
   height: fit-content;
 }
+@media (min-width: 850px) {
+  ul {
+    background-image: url("../assets/images/bg-sidebar-desktop.svg");
+    background-repeat: no-repeat;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
 ul li {
   display: block;
   height: fit-content;
   margin: 30px 10px;
   list-style: none;
+}
+@media (min-width: 850px) {
+  ul li {
+    margin: 30px 30px 0;
+    display: flex;
+  }
 }
 ul .order {
   display: flex;
@@ -103,6 +134,11 @@ ul .order {
   border: 1px solid var(--text-secondry-hight-contrast);
   border-radius: 100%;
 }
+@media (min-width: 850px) {
+  ul .order {
+    margin-right: 15px;
+  }
+}
 ul .order.active {
   color: var(--text-accent);
   background-color: var(--bg-active);
@@ -111,16 +147,42 @@ ul .order.active {
 ul .text {
   display: none; /* for mobile */
 }
+@media (min-width: 850px) {
+  ul .text {
+    display: block;
+    color: var(--text-secondry-hight-contrast);
+    text-transform: uppercase;
+  }
+  ul h3 {
+    color: var(--shadow) !important;
+    font-size: 1em !important;
+    font-weight: 400 !important;
+  }
+  ul span {
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+}
 
 /*  ==================
     Main (steps) style
     ==================  */
 .main {
   background-color: var(--section-bg);
-  margin: 0 20px;
+  height: fit-content;
+  margin: 0 20px 100px;
   border-radius: 10px;
   box-shadow: 0 35px 50px -20px var(--shadow);
   overflow: hidden;
+}
+@media (min-width: 850px) {
+  .main {
+    box-shadow: none;
+    background: none;
+    position: relative; /* To Contain Footer */
+    min-height: 100%;
+    margin-bottom: 0;
+  }
 }
 .main h2 {
   color: var(--text-accent);
@@ -321,16 +383,29 @@ input[type="checkbox"]:checked + label[for="switcher"] span {
     Footer Style
     ============  */
 footer {
+  position: fixed;
+  inset: auto 0 0;
   background-color: var(--section-bg);
-  padding: 1px;
   margin-top: auto;
   display: flex;
+}
+@media (min-width: 850px) {
+  footer {
+    position: absolute;
+    margin: 5px 25px 10px;
+    background-color: none;
+  }
 }
 footer > * {
   display: block;
   margin: 20px;
   border: none;
   cursor: pointer;
+}
+@media (min-width: 850px) {
+  footer > * {
+    margin: 0;
+  }
 }
 footer .next-btn {
   margin-left: auto;
