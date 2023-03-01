@@ -1,6 +1,6 @@
 const slider = document.getElementById("slider");
 let step = 1,
-  stepsCount = 4;
+  stepsCount = 5;
 function moveSlider() {
   slider.style.transform = `translateX(-${((step - 1) * 100) / stepsCount}%)`;
 }
@@ -8,7 +8,7 @@ moveSlider();
 const next = document.getElementById("next"),
   back = document.getElementById("back");
 next.onclick = function () {
-  if (step >= 4) {
+  if (step >= stepsCount) {
     return;
   }
   step++;

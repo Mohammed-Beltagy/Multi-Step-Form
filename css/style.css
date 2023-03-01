@@ -87,6 +87,7 @@ body {
     padding: 15px;
     border-radius: 15px;
     background: var(--section-bg);
+    box-shadow: 0 35px 50px -20px var(--shadow);
   }
 }
 
@@ -196,13 +197,13 @@ ul .text {
 
 /* Slider */
 .slider {
-  width: 400%;
+  width: 500%;
   display: flex;
   transition: 0.3s ease-in-out;
 }
 .slider .step {
   flex-basis: 100%;
-  padding: 35px 25px;
+  padding: 35px 20px;
 }
 
 /* Step One */
@@ -377,6 +378,27 @@ input[type="checkbox"]:checked + label[for="switcher"] span {
 }
 .step-four .total {
   padding: 20px;
+}
+
+/* Step Five */
+.step-five {
+  text-align: center;
+  letter-spacing: -0.1px;
+}
+@media (min-width: 850px) {
+  .step-five {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+.step-five img {
+  display: block;
+  margin: 30px auto;
+}
+.step-five h2 {
+  color: var(--text-accent-active);
+  margin-bottom: 10px;
 }
 
 /*  ============
