@@ -58,7 +58,7 @@
           </div>
         </li>
       </ul>
-      <form id="main" class="main">
+      <main>
         <!-- This Slider To Hide Steps And Moves To Show The Next Step -->
         <div id="slider" class="slider">
           <!-- Step One -->
@@ -67,17 +67,28 @@
             <p>Please provide your name, email address, and phone number.</p>
 
             <label>Name</label>
-            <input type="text" placeholder="e.g. Stephen King" required />
+            <input
+              type="text"
+              id="user-name"
+              placeholder="e.g. Stephen King"
+              required
+            />
 
             <label>Email Address</label>
             <input
               type="email"
+              id="user-email"
               placeholder="e.g. stephenking@lorem.com"
               required
             />
 
             <label>Phone Number</label>
-            <input type="tel" placeholder="e.g. +1 234 567 890" required />
+            <input
+              type="tel"
+              id="user-tel"
+              placeholder="e.g. +1 234 567 890"
+              required
+            />
           </div>
 
           <!-- Step Two -->
@@ -93,7 +104,7 @@
                 />
                 <div class="text">
                   <h3>Arcade</h3>
-                  <span class="low-contrast-text">$9/mo</span>
+                  <span class="low-contrast-text price">$9/mo</span>
                 </div>
               </div>
               <div class="plan">
@@ -103,20 +114,20 @@
                 />
                 <div class="text">
                   <h3>Advanced</h3>
-                  <span class="low-contrast-text">$12/mo</span>
+                  <span class="low-contrast-text price">$12/mo</span>
                 </div>
               </div>
               <div class="plan">
                 <img src="assets/images/icon-pro.svg" alt="Pro plan icon" />
                 <div class="text">
                   <h3>Pro</h3>
-                  <span class="low-contrast-text">$15/mo</span>
+                  <span class="low-contrast-text price">$15/mo</span>
                 </div>
               </div>
               <div class="switcher-container">
                 <span class="monthly chosen">Monthly</span>
                 <input type="checkbox" name="switcher" id="switcher" />
-                <label for="switcher"><span></span></label>
+                <label for="switcher" id="switch-btn"><span></span></label>
                 <span class="yearly">Yearly</span>
               </div>
             </div>
@@ -129,18 +140,18 @@
             <div class="add-ons-container">
               <label for="add-on-1" class="add-on checked">
                 <input type="checkbox" name="add-on-1" id="add-on-1" checked />
-                <label class="checkbox-alt"></label>
+                <span class="checkbox-alt"></span>
                 <div class="text">
                   <h3>Online service</h3>
-                  <span class="low-contrast-text"
-                    >Access to multiplayer games</span
+                  <span class="low-contrast-text">
+                    Access to multiplayer games</span
                   >
                 </div>
                 <span class="price">+$1/mo</span>
               </label>
               <label for="add-on-2" class="add-on checked">
                 <input type="checkbox" name="add-on-2" id="add-on-2" checked />
-                <label class="checkbox-alt"></label>
+                <span class="checkbox-alt"></span>
                 <div class="text">
                   <h3>Larger storage</h3>
                   <span class="low-contrast-text">Extra 1TB of cloud save</span>
@@ -149,7 +160,7 @@
               </label>
               <label for="add-on-3" class="add-on">
                 <input type="checkbox" name="add-on-3" id="add-on-3" />
-                <label class="checkbox-alt"></label>
+                <span class="checkbox-alt"></span>
                 <div class="text">
                   <h3>Customizable Profile</h3>
                   <span class="low-contrast-text"
@@ -166,7 +177,8 @@
             <h2>Finishing up</h2>
             <p>Double-check everything looks OK before confirming.</p>
 
-            <div class="sum">
+            <div id="sum" class="sum">
+              <!-- Example For Which Will Be Created With JS -->
               <div class="row">
                 <div class="text">
                   <h3>Arcade (Monthly)</h3>
@@ -187,7 +199,7 @@
                 <span class="price">+$20/y</span>
               </div>
             </div>
-            <div class="total row">
+            <div id="total" class="total row">
               <span class="low-contrast-text">Total (per year)</span>
               <span class="price">$120/y</span>
             </div>
@@ -205,16 +217,15 @@
           </div>
         </div>
         <footer>
-          <input type="button" value="Go Back" id="back" class="back-btn" />
           <input
-            type="submit"
-            value="Next Step"
-            id="next"
-            class="next-btn"
-            form="main"
+            type="button"
+            value="Go Back"
+            id="back"
+            class="back-btn hidden"
           />
+          <input type="button" value="Next Step" id="next" class="next-btn" />
         </footer>
-      </form>
+      </main>
     </div>
 
     <div class="not-styled">

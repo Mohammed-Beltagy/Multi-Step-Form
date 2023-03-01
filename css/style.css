@@ -20,6 +20,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+.hidden {
+  visibility: hidden;
+}
 
 /* Colors */
 :root {
@@ -43,7 +46,6 @@
   /* neutral */
   --alabaster: hsl(231, 100%, 99%);
 }
-
 body {
   font-family: "Ubuntu", sans-serif;
   background-color: var(--main-bg);
@@ -75,10 +77,10 @@ body {
   .container {
     display: grid;
     grid-template-columns: 274px 500px;
-    grid-template-rows: 568px;
+    grid-template-rows: min(568px, 90vh);
 
     width: fit-content;
-    min-height: 0;
+    min-height: fit-content;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -134,6 +136,8 @@ ul .order {
 
   border: 1px solid var(--text-secondry-hight-contrast);
   border-radius: 100%;
+
+  transition: background-color 0.3s, color 0.3s;
 }
 @media (min-width: 850px) {
   ul .order {
@@ -168,7 +172,7 @@ ul .text {
 /*  ==================
     Main (steps) style
     ==================  */
-.main {
+main {
   background-color: var(--section-bg);
   height: fit-content;
   margin: 0 20px 100px;
@@ -177,7 +181,7 @@ ul .text {
   overflow: hidden;
 }
 @media (min-width: 850px) {
-  .main {
+  main {
     box-shadow: none;
     background: none;
     position: relative; /* To Contain Footer */
@@ -185,11 +189,11 @@ ul .text {
     margin-bottom: 0;
   }
 }
-.main h2 {
+main h2 {
   color: var(--text-accent);
   font-weight: 700;
 }
-.main h2 + p {
+main h2 + p {
   margin: 10px 0;
   line-height: 1.4;
   color: var(--text-secondry);
@@ -239,6 +243,14 @@ ul .text {
   margin-top: 15px;
   border-radius: 7px;
 }
+@media (min-width: 850px) {
+  .step-two .plans-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
 .step-two .plan,
 .step-three .add-on {
   border: 1px solid var(--shadow);
@@ -246,6 +258,14 @@ ul .text {
   user-select: none;
   color: var(--text-accent-active);
   font-weight: 500;
+}
+@media (min-width: 850px) {
+  .step-two .plan {
+    flex-direction: column;
+    align-items: flex-start;
+    flex-basis: calc((100% - 20px) / 3);
+    margin: 0;
+  }
 }
 .step-two .plan.chosen,
 .step-three .add-on.checked {
@@ -262,6 +282,11 @@ ul .text {
 /* Step Two */
 .step-two .plan img {
   margin-right: 15px;
+}
+@media (min-width: 850px) {
+  .step-two .plan img {
+    margin-bottom: 40px;
+  }
 }
 .step-two .switcher-container {
   margin-top: 25px;
@@ -294,10 +319,12 @@ ul .text {
   top: 50%;
   left: 4px;
   transform: translateY(-50%);
+
   display: block;
   width: 12px;
   height: 12px;
   border-radius: 100%;
+
   background-color: var(--text-secondry-hight-contrast);
   transition: 0.3s;
 }
@@ -345,6 +372,18 @@ input[type="checkbox"]:checked + label[for="switcher"] span {
   background-color: var(--alabaster);
   border-radius: 10px;
   padding: 10px 20px;
+}
+.sum :first-child .text {
+  text-transform: capitalize;
+}
+.sum :first-child .text span:hover {
+  /* (Change) Word */
+  cursor: pointer;
+  text-decoration: underline;
+}
+.sum :not(:first-child) ::first-letter {
+  /* First Letter Of Each Add-On */
+  text-transform: uppercase;
 }
 .step-four h3 {
   font-size: 1em;
@@ -437,10 +476,16 @@ footer .next-btn {
   color: var(--alabaster);
   border-radius: 5px;
 
-  transition: 0.3s;
+  transition: background-color 0.3s;
 }
 footer .next-btn:hover {
   background-color: var(--text-accent-active);
+}
+footer .next-btn.confirm {
+  background-color: var(--field-active);
+}
+footer .next-btn.confirm:hover {
+  background-color: #827cff;
 }
 footer .back-btn {
   background: none;
