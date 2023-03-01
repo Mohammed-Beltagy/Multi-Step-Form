@@ -48,6 +48,67 @@ const formData = {
   };
 let payType = "monthly";
 
+// =================
+// Step-1 Validation
+// =================
+
+const inputs = {
+  user_name: document.getElementById("user-name"),
+  user_email: document.getElementById("user-email"),
+  user_tel: document.getElementById("user-tel"),
+};
+function isFormValid() {
+  let notValid = [false, false, false];
+  // Check Validation
+  // name
+  if (inputs.user_name.value.length === 0) {
+    inputs.user_name.classList.add("error");
+    notValid[0] = true;
+    inputs.user_name.previousElementSibling.classList.add("required");
+  } else if (
+    /\w+/.test(inputs.user_name.value) === false ||
+    inputs.user_name.value[0] === " "
+  ) {
+    inputs.user_name.classList.add("error");
+    notValid[0] = true;
+    inputs.user_name.previousElementSibling.classList.add("invalid-name");
+  }
+  // email
+  if (inputs.user_email.value.length === 0) {
+    inputs.user_email.classList.add("error");
+    notValid[1] = true;
+    inputs.user_email.previousElementSibling.classList.add("required");
+  } else if (
+    /\w+\@\w+\.\w+/.test(inputs.user_email.value) === false ||
+    inputs.user_email.value[0] === " "
+  ) {
+    inputs.user_email.classList.add("error");
+    notValid[1] = true;
+    inputs.user_email.previousElementSibling.classList.add("invalid-email");
+  }
+  // tel
+  if (inputs.user_tel.value.length === 0) {
+    inputs.user_tel.classList.add("error");
+    notValid[2] = true;
+    inputs.user_tel.previousElementSibling.classList.add("required");
+  } else if (
+    /[^\+\d+]/.test(inputs.user_tel.value) === true ||
+    inputs.user_tel.value[0] === " "
+  ) {
+    inputs.user_tel.classList.add("error");
+    notValid[2] = true;
+    inputs.user_tel.previousElementSibling.classList.add("invalid-tel");
+  }
+  // If There Is Any Field Invalid Return (false) Else Return (true)
+  let valid = true;
+  for (let i = 0; i < notValid.length; i++) {
+    if (notValid[i] === true) {
+      valid = false;
+    }
+  }
+  return valid;
+}
+
 // =============
 // Step-2 Events
 // =============
@@ -124,9 +185,9 @@ function changeData(fromSwitcher = false) {
     case 2:
       if (!fromSwitcher) {
         // Next-Btn Is Clicked => Save Data
-        formData.user.name = document.getElementById("user-name").value;
-        formData.user.email = document.getElementById("user-email").value;
-        formData.user.tel = document.getElementById("user-tel").value;
+        formData.user.name = inputs.user_name.value;
+        formData.user.email = inputs.user_email.value;
+        formData.user.tel = inputs.user_tel.value;
       } else {
         // Switch Btn clicked => Change Prices
         plans.forEach((plan) => {
@@ -183,6 +244,19 @@ function changeData(fromSwitcher = false) {
           `;
         }
       }
+      // Display Text If The User Didn't Choose Any Add-On
+      if (
+        formData.add_ons[Object.keys(formData.add_ons)[0]] === false &&
+        formData.add_ons[Object.keys(formData.add_ons)[1]] === false &&
+        formData.add_ons[Object.keys(formData.add_ons)[2]] === false
+      ) {
+        sum.innerHTML += `<div class="row">
+        <span class="price">
+        A step is submitted, but no selection has been made
+        </span>
+        </div>`;
+      }
+
       // Display Total
       const total = document.getElementById("total");
       total.innerHTML = `
@@ -206,6 +280,7 @@ function moveSlider() {
     back.classList.remove("hidden");
   } else {
     back.classList.add("hidden");
+    next.setAttribute("type", "submit");
   }
   // Remove Buttons At Step 5
   if (step >= 5) {
@@ -214,7 +289,6 @@ function moveSlider() {
   }
   // Add (confirm) Class To (Next) btn In Last Step
   if (step === 4) {
-    console.log("hello");
     next.classList.add("confirm");
     next.value = "Confirm";
   } else {
@@ -226,17 +300,13 @@ function moveSlider() {
   stepsOrder[step - 1].classList.add("active");
 }
 moveSlider();
-// Add Events To Buttons
-function isFormValid() {
-  return true;
-}
 // Next/Back Buttons
 next.onclick = function () {
   if (step >= stepsCount) {
     return;
   }
   if (step === 1 && !isFormValid()) {
-    console.log(new Error("Forms Not Valid"));
+    console.log(new Error("Form Is Not Valid"));
   } else {
     step++;
     moveSlider();

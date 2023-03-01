@@ -1,8 +1,7 @@
-/* Temporary Style */
-.not-styled {
-  display: none;
-}
+/* Attribution Style */
 .attribution {
+  position: absolute;
+  inset: auto 0 10px;
   font-size: 11px;
   text-align: center;
 }
@@ -40,10 +39,6 @@
   --main-bg: hsl(217, 100%, 97%);
   --shadow: hsl(229, 24%, 87%);
 
-  /* Unused Colors */
-  /* primary */
-  --pastel-blue: hsl(228, 100%, 84%);
-  /* neutral */
   --alabaster: hsl(231, 100%, 99%);
 }
 body {
@@ -212,10 +207,34 @@ main h2 + p {
 
 /* Step One */
 .step-one label {
+  position: relative;
   display: block;
   margin: 20px 0 5px;
   color: var(--text-accent-active);
   font-weight: 500;
+}
+.step-one label::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 auto;
+  color: var(--field-error);
+  font-weight: 700;
+  letter-spacing: -1px;
+  font-size: 0.9em;
+  max-width: min(300px, 80%);
+  text-align: end;
+}
+.step-one label.required::after {
+  content: "This field is required";
+}
+.step-one label.invalid-name::after {
+  content: "The email address is not formatted correctly";
+}
+.step-one label.invalid-email::after {
+  content: "The email address is not formatted correctly";
+}
+.step-one label.invalid-tel::after {
+  content: "The telephone number is not formatted correctly";
 }
 .step-one input {
   width: 100%;
@@ -226,6 +245,9 @@ main h2 + p {
 
   color: var(--text-accent-active);
   font-weight: 500;
+}
+.step-one input.error {
+  border-color: var(--field-error);
 }
 .step-one input::placeholder {
   color: var(--text-secondry);
